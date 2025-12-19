@@ -59,13 +59,34 @@ body {
     color: lightslategrey;
 }
 
+.add-btn {
+    position: absolute;
+    right: -110px;
+    background: mediumslateblue;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+    background: slateblue;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
 .header-icons {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.history-btn, .notification-bell {
+.history-btn, .notification-bell, .user-btn {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -79,7 +100,7 @@ body {
     position: relative;
 }
 
-.history-btn:hover, .notification-bell:hover {
+.history-btn:hover, .notification-bell:hover, .user-btn:hover {
     background: mediumslateblue;
     color: white;
 }
@@ -92,4 +113,8 @@ body {
     height: 10px;
     background: #ef4444;
     border-radius: 50%;
+}
+
+.title-section h1 #task-count {
+    color: mediumslateblue;
 }

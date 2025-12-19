@@ -11,10 +11,12 @@
         <div class="header">
             <div class="task-bar">
                 <div class="input-group">
-                    <input type="text" id="task-input" placeholder="Add a new task">
+                    <input type="text" id="task-input" placeholder="Add a New Task...">
                     <i class="fa-solid fa-plus"></i>
+                    <button class="add-btn" onClick="openModal()">Add New</button>
                 </div>
             </div>
+
             <div class="header-icons">
                 <button class="history-btn">
                     <i class="fa-solid fa-history"></i>
@@ -24,6 +26,51 @@
                     <i class="fa-solid fa-bell"></i>
                     <span class="notification-dot"></span>
                 </button>
+                <button class="user-btn">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="title-section">
+                <div class="greeting" id="greeting"></div>
+                <h1>
+                    You have <span id="task-count">0</span> tasks today
+                    
+                </h1>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Task Summary:</div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Completed Tasks:</div>
+                    <div class="stat-value" id="completionRateValue" style="width: 0%;">0%</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="completionProgess" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Total Tasks:</div>
+                    <div class="stat-value" id="totalTasks">0</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="totalProgress" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Completed</div>
+                    <div class="stat-value" id="completedCount">0</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Pending</div>
+                    <div class="stat-value" id="pendingCount">0</div>
+                </div>
             </div>
         </div>
     </div>
