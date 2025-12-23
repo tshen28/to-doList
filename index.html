@@ -21,15 +21,23 @@
             <i class="fa-solid fa-bell"></i>
             <span class="notification-dot"></span>
           </button>
-          <button class="user-btn">
+          <button class="user-btn" onClick="openUserModal()">
             <i class="fa-solid fa-user"></i>
           </button>
+          <div class="modal" id="userModal" aria-hidden="true">
+            <div class="modal-content">
+              <button class="modal-actions login">Login</button>
+              <button class="modal-actions signup">Sign Up</button>
+              <button class="modal-actions close" id="closeUserModal" onClick="closeUserModal()">Cancel</button>
+            </div>
+          </div>
           <button
             class="theme-toggle-btn"
-            onclick="toggleTheme()"
+            id="theme-toggle"
             aria-label="Toggle theme"
+            aria-pressed="false"
           >
-            <i class="fa-solid fa-moon"></i>
+            <i id="theme-icon" class="fa-solid fa-moon"></i>
           </button>
         </div>
       </div>
