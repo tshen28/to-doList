@@ -28,10 +28,18 @@
           <div class="modal" id="userModal">
             <div class="modal-content">
               <div class="modal-actions">
-                <button class="btn btn-primary" onClick="userLogin()">Login</button>
-                <button class="btn btn-primary" onClick="userSignup()">Sign Up</button>
-                <button class="btn btn-primary" onClick="userLogout()">Logout</button>
-                <button class="btn btn-secondary" onClick="closeUserModal()">Close</button>
+                <button class="btn btn-primary" onClick="userLogin()">
+                  Login
+                </button>
+                <button class="btn btn-primary" onClick="userSignup()">
+                  Sign Up
+                </button>
+                <button class="btn btn-primary" onClick="userLogout()">
+                  Logout
+                </button>
+                <button class="btn btn-secondary" onClick="closeUserModal()">
+                  Close
+                </button>
               </div>
             </div>
           </div>
@@ -51,6 +59,65 @@
         <div class="title-section">
           <div class="greeting" id="greeting"></div>
           <h1>You have <span id="task-count">0</span> tasks today.</h1>
+        </div>
+
+        <div class="task-bar">
+          <div class="input-group">
+            <input
+              type="text"
+              id="task-input"
+              placeholder="Add a New Task..."
+            />
+            <i class="fa-solid fa-plus"></i>
+            <button class="add-btn" onClick="openModal()">Add New</button>
+          </div>
+        </div>
+
+        <div class="task-section">
+          <div class="task-section-header">
+            <h2>In-Progress</h2>
+            <span class="badge badge-active">Active</span>
+          </div>
+          <div id="inProgressTasks">
+            <!-- append in-progress tasks here -->
+            <div class="task-item">
+              <div class="task-checkbox" onclick="toggleTask()"></div>
+              <div class="task-content">
+                <div class="task-title">Example Task</div>
+              </div>
+              <span class="status-badge status-x"></span>
+              <div class="priority-badge priority-x">
+                <i class="fa-solid fa-flag"></i>
+              </div>
+              <button
+                class="edit-icon"
+                style="width: 30px; height: 30px"
+                onclick="editTask()"
+              >
+                <i
+                  class="fa-solid fa-pen-to-square"
+                  style="font-size: 14px"
+                ></i>
+              </button>
+              <button
+                class="delete-icon"
+                style="width: 30px; height: 30px"
+                onclick="deleteTask()"
+              >
+                <i class="fa-solid fa-trash" style="font-size: 14px"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-section">
+          <div class="task-section-header">
+            <h2>Completed</h2>
+            <span class="badge badge-inactive">Inactive</span>
+          </div>
+          <div id="completedTasks">
+            <!-- append completed tasks here -->
+          </div>
         </div>
       </div>
 
@@ -94,13 +161,6 @@
             <div class="stat-value" id="pendingCount">0</div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="task-bar">
-      <div class="input-group">
-        <input type="text" id="task-input" placeholder="Add a New Task..." />
-        <i class="fa-solid fa-plus"></i>
-        <button class="add-btn" onClick="openModal()">Add New</button>
       </div>
     </div>
 
