@@ -203,6 +203,84 @@ body {
   transition: all 0.3s ease;
 }
 
+.task-checkbox.completed {
+    background: mediumslateblue;
+    position: relative;
+}
+
+.task-checkbox.completed::after {
+    content: '✓';
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.task-content {
+  flex: 1;
+}   
+
+.task-title {
+  font-size: 16px;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+.task-title.completed {
+    text-decoration: line-through;
+    color: #9ca3af; 
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-pending {
+    background: #fbbf24;
+    color: #fffbeb;
+}
+
+.status-in-progress {
+    background: #3b82f6;
+    color: #eff6ff;
+}
+
+.status-completed {
+    background: green;
+    color: #ecfdf5;
+}
+
+.status-cancelled {
+    background: #ef4444;
+    color: #ffdbdb;
+}
+
+.priority-badge {
+    display: flex;
+    align-self: center;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.priority.critical {
+    color: #ef4444;
+}
+
+.priority-normal {
+    color: #f59e0b;
+}
+
+.priority-minor {
+    color: green;
+}
+
 .badge {
   padding: 4px 12px;
   border-radius: 20px;
