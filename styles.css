@@ -118,7 +118,7 @@ body {
 }
 
 .user-btn:active {
-    background: #f3f4f6
+  background: #f3f4f6;
 }
 
 .notification-dot {
@@ -199,19 +199,19 @@ body {
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    top: 90px;
-    right: 40px;
-    width: auto;
-    height: auto;
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
+  display: none;
+  position: fixed;
+  top: 90px;
+  right: 40px;
+  width: auto;
+  height: auto;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
 }
 
-.modal-active {
-    display: flex;
+.modal.active {
+  display: flex;
 }
 
 .modal-content {
@@ -230,35 +230,36 @@ body {
 }
 
 .btn {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    transition: all 0.3s ease; 
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .btn-primary {
-    background: mediumslateblue;
-    color: white;
+  background: mediumslateblue;
+  color: white;
 }
 
 .btn-primary:hover {
-    background: slateblue;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  background: slateblue;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
 .btn-secondary {
-    background: #f3f4f6;
-    color: #1f2937;
+  background: #f3f4f6;
+  color: #1f2937;
+  border: #6b7280 px solid;
 }
 
 .btn-secondary:hover {
-    background: #e5e7eb;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #e5e7eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 900px) {

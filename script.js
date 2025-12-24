@@ -9,59 +9,11 @@ function updateGreeting() {
     document.getElementById('greeting').textContent = `${greetingText}, User!`;
 }
 
-
-//toggle light/dark theme
-function applyTheme(theme) {
-    const body = document.body;
-    const isDark = theme === 'dark';
-    body.classList.toggle('dark-theme', isDark);
-
-    const themeIcon = document.getElementById('theme-icon');
-    if (themeIcon) {
-        themeIcon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-    }
-
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (toggleBtn) toggleBtn.setAttribute('aria-pressed', isDark);
-}
-
-function toggleTheme() {
-    const body = document.body;
-    const willBeDark = !body.classList.contains('dark-theme');
-    const theme = willBeDark ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
-    applyTheme(theme);
-}
-
-function initTheme() {
-    const saved = localStorage.getItem('theme');
-    if (saved) applyTheme(saved);
-    else applyTheme('light');
-
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
-}
-
 //user modal functions
 function openUserModal() {
-    const modal = document.getElementById('userModal');
-    if (!modal) return console.error('User modal not found');
-    modal.classList.add('show');
-    document.body.style.overflow = 'hidden';
+    document.getElementById('userModal').classList.add('active');
 }
 
 function closeUserModal() {
-    const modal = document.getElementById('userModal');
-    if (!modal) return;
-    modal.classList.remove('show');
-    document.body.style.overflow = '';
+    document.getElementById('userModal').classList.remove('active');
 }
-
-//close modal when clicking outside of it
-window.addEventListener('click', (e) => { 
-    const modal = document.getElementById('userModal');
-    if (modal && e.target === modal) closeUserModal();
-});
-
-updateGreeting();
-initTheme();
