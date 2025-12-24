@@ -46,16 +46,14 @@ function initTheme() {
 function openUserModal() {
     const modal = document.getElementById('userModal');
     if (!modal) return console.error('User modal not found');
-    modal.style.display = 'block';
-    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('show');
     document.body.style.overflow = 'hidden';
 }
 
 function closeUserModal() {
     const modal = document.getElementById('userModal');
     if (!modal) return;
-    modal.style.display = 'none';
-    modal.setAttribute('aria-hidden', 'true');
+    modal.classList.remove('show');
     document.body.style.overflow = '';
 }
 
