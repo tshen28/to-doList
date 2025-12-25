@@ -33,6 +33,7 @@ body {
   grid-column: 1/-1;
 }
 
+/* task bar styles */
 .task-bar {
   position: relative;
   margin-top: 15px;
@@ -83,6 +84,7 @@ body {
   box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
+/* header icon styles */
 .header-icons {
   display: flex;
   gap: 10px;
@@ -132,6 +134,7 @@ body {
   border-radius: 50%;
 }
 
+/* title section styles */
 .title-section h1 #task-count {
   color: mediumslateblue;
 }
@@ -143,6 +146,78 @@ body {
   margin-bottom: 10px;
 }
 
+/* task modal styles */
+.taskModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskModal.active {
+    display: flex;
+}
+
+.taskModal-content {
+    background: white;
+    border: #6b7280 2px solid;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.taskModal-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #374151;
+}
+
+.form-group select {
+    margin-bottom: 8px;
+}
+
+.form-group input, .form-group select {   
+    width: 80%;
+    padding: 10px;
+    border: #6b7280 2px solid;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    cursor: pointer
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: mediumslateblue;
+}
+
+.taskModal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* task section styles */
 .task-section {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -234,6 +309,7 @@ body {
     color: #9ca3af; 
 }
 
+/* badge styles */
 .status-badge {
     padding: 6px 12px;
     border-radius: 15px;
@@ -298,6 +374,7 @@ body {
   color: #ffdbdb;
 }
 
+/* sidebar styles */
 .sidebar {
   background: #f9fafb;
   border-radius: 20px;
@@ -361,6 +438,7 @@ body {
   transition: width 0.5s ease;
 }
 
+/* user modal styles */
 .modal {
   display: none;
   position: fixed;
@@ -417,7 +495,7 @@ body {
 .btn-secondary {
   background: #f3f4f6;
   color: #1f2937;
-  border: #6b7280 px solid;
+  border: #6b7280 2px solid;
 }
 
 .btn-secondary:hover {
@@ -426,6 +504,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* mobile responsive styles */
 @media (max-width: 900px) {
   .container {
     grid-template-columns: 1fr;

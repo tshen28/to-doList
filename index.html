@@ -69,7 +69,7 @@
               placeholder="Add a New Task..."
             />
             <i class="fa-solid fa-plus"></i>
-            <button class="add-btn" onClick="openModal()">Add New</button>
+            <button class="add-btn" onClick="openTaskModal()">Add New</button>
           </div>
         </div>
 
@@ -79,7 +79,7 @@
             <span class="badge badge-active">Active</span>
           </div>
           <div id="inProgressTasks">
-            <!-- append in-progress tasks here --> 
+            <!-- append in-progress tasks here -->
           </div>
         </div>
 
@@ -134,6 +134,45 @@
             <div class="stat-value" id="pendingCount">0</div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="taskModal" id="taskModal">
+      <div class="taskModal-content">
+        <h2 class="taskModal-header">
+          <!-- Inputted task goes here -->
+        </h2>
+        <form id="taskForm">
+          <div class="form-group">
+            <label for="taskStatus">Status</label>
+            <select id="taskStatus" required>
+              <option value="" disabled selected hidden>Select Status...</option>
+              <option value="pending">Pending</option>
+              <option value="in-progress">In-Progress</option>
+              <option value="cancelled">Cancelled</option>
+              <option value="completed">Completed</option>
+            </select>
+
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority" required>
+              <option value="" disabled selected hidden>Select Priority...</option>
+              <option value="minor">Minor</option>
+              <option value="normal">Normal</option>
+              <option value="critical">Critical</option>
+            </select>
+          </div>
+
+          <div class="taskModal-actions">
+            <button type="submit" class="btn btn-primary">Add Task</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onClick="closeTaskModal()"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 
