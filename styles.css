@@ -513,14 +513,4 @@ body {
   .container {
     grid-template-columns: 1fr;
   }
-
-  .header-icons {
-    position: static;
-    right: auto;
-    top: auto;
-    margin-top: 12px;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-  }
 }

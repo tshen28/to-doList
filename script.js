@@ -1,6 +1,7 @@
 //task functions
 let tasks = [];
 let editingId = null;
+let maxTasks = 0;
 
 function loadData() {
   const saved = localStorage.getItem("tasks");
@@ -61,15 +62,15 @@ function renderTasks() {
   const pendingCount = taskCount - completedCount;
   const rate = taskCount ? Math.round((completedCount / taskCount) * 100) : 0;
 
+  document.getElementById("totalTasks").textContent = pendingCount;
   document.getElementById("task-count").textContent = pendingCount;
   document.getElementById("task-word").textContent =
     pendingCount === 1 ? "task" : "tasks";
-  document.getElementById("totalTasks").textContent = taskCount;
+  document.getElementById("totalTasks").textContent = pendingCount;
   document.getElementById("pendingCount").textContent = pendingCount;
   document.getElementById("completedCount").textContent = completedCount;
   document.getElementById("completionRateValue").textContent = `${rate}%`;
-  document.getElementById("completionRateProgress").style.width = `${rate}%`;
-  document.getElementById("totalTasksProgress").style.width = `${rate}%`;
+  document.getElementById("completionProgress").style.width = `${rate}%`;
 
   saveData();
 }
@@ -94,10 +95,6 @@ function editTask(id) {
   const task = tasks.find((t) => t.id === id);
   if (task) {
     editingId = id;
-    document.getElementById("task-input").value = task.title;
-    document.getElementById("taskStatus").value = task.status;
-    document.getElementById("taskPriority").value = task.priority;
-    document.getElementById("add-btn").textContent = "Update Task";
     editTaskModal(id);
   }
 }
@@ -127,7 +124,7 @@ const taskCard = (t) => `
                 <button
                     class="edit-icon"
                     style="width: 30px; height: 30px"
-                    onclick="editTask()"
+                    onclick="editTask(${t.id})"
                 >
                     <i
                     class="fa-solid fa-pen-to-square"
@@ -137,7 +134,7 @@ const taskCard = (t) => `
                 <button
                     class="delete-icon"
                     style="width: 30px; height: 30px"
-                    onclick="deleteTask()"
+                    onclick="deleteTask(${t.id})"
                 >
                     <i class="fa-solid fa-trash" style="font-size: 14px"></i>
                 </button>
@@ -160,7 +157,7 @@ const completedTaskCard = (t) => `
                 <button
                     class="edit-icon"
                     style="width: 30px; height: 30px"
-                    onclick="editTask()"
+                    onclick="editTask(${t.id})"
                 >
                     <i
                     class="fa-solid fa-pen-to-square"
@@ -170,7 +167,7 @@ const completedTaskCard = (t) => `
                 <button
                     class="delete-icon"
                     style="width: 30px; height: 30px"
-                    onclick="deleteTask()"
+                    onclick="deleteTask(${t.id})"
                 >
                     <i class="fa-solid fa-trash" style="font-size: 14px"></i>
                 </button>
@@ -197,8 +194,9 @@ function openTaskModal() {
     alert("Please enter a task before adding.");
     return;
   }
+  const header = document.querySelector(".taskModal-header");
+  header.innerHTML = taskValue;
   document.getElementById("taskModal").classList.add("active");
-  document.querySelector(".taskModal-header").textContent = taskValue;
   taskInput.value = "";
 }
 
@@ -208,31 +206,32 @@ function closeTaskModal() {
   editingId = null;
 }
 
-// function editTaskModal(id) {
-//   const task = tasks.find((t) => t.id === id);
-//   if (!task) return;
+function editTaskModal(id) {
+  const task = tasks.find((t) => t.id === id);
+  if (!task) return;
 
-//   const header = document.querySelector(".taskModal-header");
-//   header.innerHTML = `<input type="text" id="task-input" value="${task.title}" required />`;
+  const header = document.querySelector(".taskModal-header");
+  header.innerHTML = `<input type="text" id="edit-task-title" value="${task.title}" required />`;
 
-//   document.getElementById("taskStatus").value = task.status;
-//   document.getElementById("taskPriority").value = task.priority;
-//   document.getElementById("add-btn").textContent = "Update Task";
+  document.getElementById("taskStatus").value = task.status;
+  document.getElementById("taskPriority").value = task.priority;
+  document.getElementById("add-btn").textContent = "Update Task";
 
-//   editingId = id;
-//   document.getElementById("taskModal").classList.add("active");
-// }
+  editingId = id;
+  document.getElementById("taskModal").classList.add("active");
+}
 
 //form edit and submit
 document.getElementById("taskForm").addEventListener("submit", function (e) {
   e.preventDefault();
-  const title = document.getElementById("task-input").value.trim();
+  const title = editingId ? document.getElementById("edit-task-title").value.trim() : document.getElementById("task-input").value.trim();
   const status = document.getElementById("taskStatus").value;
   const priority = document.getElementById("taskPriority").value;
 
   if (editingId) {
     const task = tasks.find((t) => t.id === editingId);
     task.title = title;
+    console.log(task.title)
     task.status = status;
     task.priority = priority;
     task.completed = status === "completed";
@@ -248,6 +247,7 @@ document.getElementById("taskForm").addEventListener("submit", function (e) {
 
   renderTasks();
   closeTaskModal();
+  document.getElementById("task-input").value = "";
 });
 
 //user modal functions
@@ -258,6 +258,11 @@ function openUserModal() {
 function closeUserModal() {
   document.getElementById("userModal").classList.remove("active");
 }
+
+//toggle theme function:
+//toggle between light and dark themes
+//save preference in local storage
+//apply saved theme on page load
 
 //user modal button paths:
 //login and sign up buttons available when user is logged out
