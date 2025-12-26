@@ -264,6 +264,11 @@ function closeUserModal() {
 //only logout button available when user is logged in
 //close button always available
 
+//notification dots:
+//notification dots on bell and history icons when there are new notifications or updates
+//when clicked, dots disappear and the user can view notifications
+//only show dots for notifications that are new or unread
+
 //call functions
 updateGreeting();
 loadData();

@@ -148,73 +148,75 @@ body {
 
 /* task modal styles */
 .taskModal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
 }
 
 .taskModal.active {
-    display: flex;
+  display: flex;
 }
 
 .taskModal-content {
-    background: white;
-    border: #6b7280 2px solid;
-    padding: 30px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 500px;
+  background: white;
+  border: #6b7280 2px solid;
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
 }
 
 .taskModal-header {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #1f2937;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1f2937;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #374151;
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
 }
 
 .form-group select {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
-.form-group input, .form-group select {   
-    width: 80%;
-    padding: 10px;
-    border: #6b7280 2px solid;
-    border-radius: 10px;
-    font-size: 14px;
-    outline: none;
-    transition: all 0.3s ease;
-    cursor: pointer
+.form-group input,
+.form-group select {
+  width: 80%;
+  padding: 10px;
+  border: #6b7280 2px solid;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.form-group input:focus, .form-group select:focus {
-    border-color: mediumslateblue;
+.form-group input:focus,
+.form-group select:focus {
+  border-color: mediumslateblue;
 }
 
 .taskModal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 /* task section styles */
@@ -279,24 +281,24 @@ body {
 }
 
 .task-checkbox.completed {
-    background: mediumslateblue;
-    position: relative;
+  background: mediumslateblue;
+  position: relative;
 }
 
 .task-checkbox.completed::after {
-    content: '✓';
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 12px;
-    font-weight: 600;
+  content: "✓";
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .task-content {
   flex: 1;
-}   
+}
 
 .task-title {
   font-size: 16px;
@@ -305,56 +307,56 @@ body {
 }
 
 .task-title.completed {
-    text-decoration: line-through;
-    color: #9ca3af; 
+  text-decoration: line-through;
+  color: #9ca3af;
 }
 
 /* badge styles */
 .status-badge {
-    padding: 6px 12px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .status-pending {
-    background: #fbbf24;
-    color: #fffbeb;
+  background: #fbbf24;
+  color: #fffbeb;
 }
 
 .status-in-progress {
-    background: #3b82f6;
-    color: #eff6ff;
+  background: #3b82f6;
+  color: #eff6ff;
 }
 
 .status-completed {
-    background: green;
-    color: #ecfdf5;
+  background: green;
+  color: #ecfdf5;
 }
 
 .status-cancelled {
-    background: #ef4444;
-    color: #ffdbdb;
+  background: #ef4444;
+  color: #ffdbdb;
 }
 
 .priority-badge {
-    display: flex;
-    align-self: center;
-    gap: 5px;
-    font-size: 16px;
-    font-weight: 600;
+  display: flex;
+  align-self: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .priority-critical {
-    color: #ef4444;
+  color: #ef4444;
 }
 
 .priority-normal {
-    color: #f59e0b;
+  color: #f59e0b;
 }
 
 .priority-minor {
-    color: green;
+  color: green;
 }
 
 .badge {
@@ -376,6 +378,8 @@ body {
 
 /* sidebar styles */
 .sidebar {
+  height: auto;
+  max-height: 80vh;
   background: #f9fafb;
   border-radius: 20px;
   border: #6b7280 2px solid;
