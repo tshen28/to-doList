@@ -1,7 +1,6 @@
 //task functions
 let tasks = [];
 let editingId = null;
-let maxTasks = 0;
 
 function loadData() {
   const saved = localStorage.getItem("tasks");
@@ -11,7 +10,7 @@ function loadData() {
       {
         id: 1,
         title: "User authentication",
-        status: "cancelled",
+        status: "completed",
         priority: "critical",
         completed: false,
       },
@@ -27,13 +26,6 @@ function loadData() {
         title: "Mobile responsiveness",
         status: "in-progress",
         priority: "normal",
-        completed: false,
-      },
-      {
-        id: 4,
-        title: "User avatar for tasks",
-        status: "completed",
-        priority: "minor",
         completed: false,
       },
     ];
