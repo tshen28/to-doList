@@ -61,6 +61,9 @@ function renderTasks() {
   const pendingCount = taskCount - completedCount;
   const rate = taskCount ? Math.round((completedCount / taskCount) * 100) : 0;
 
+  document.getElementById("task-count").textContent = pendingCount;
+  document.getElementById("task-word").textContent =
+    pendingCount === 1 ? "task" : "tasks";
   document.getElementById("totalTasks").textContent = taskCount;
   document.getElementById("pendingCount").textContent = pendingCount;
   document.getElementById("completedCount").textContent = completedCount;
