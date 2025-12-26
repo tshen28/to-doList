@@ -345,7 +345,7 @@ body {
     font-weight: 600;
 }
 
-.priority.critical {
+.priority-critical {
     color: #ef4444;
 }
 

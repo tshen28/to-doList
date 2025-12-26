@@ -79,6 +79,7 @@ function toggleTask(id) {
     renderTasks();
   }
 }
+
 function deleteTask(id) {
   if (confirm("Are you sure you want to delete this task?")) {
     tasks = tasks.filter((t) => t.id !== id);
@@ -91,10 +92,10 @@ function editTask(id) {
   if (task) {
     editingId = id;
     document.getElementById("task-input").value = task.title;
-    document.getElementById("status-select").value = task.status;
-    document.getElementById("priority-select").value = task.priority;
-    document.getElementById("add-task-btn").textContent = "Update Task";
-    openTaskModal();
+    document.getElementById("taskStatus").value = task.status;
+    document.getElementById("taskPriority").value = task.priority;
+    document.getElementById("add-btn").textContent = "Update Task";
+    editTaskModal(id);
   }
 }
 
@@ -117,7 +118,7 @@ const taskCard = (t) => `
                     }
                 </span>
                 <div class="priority-badge priority-${t.priority}">
-                    <i class="fa-solid fa-flag"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
                     ${t.priority.charAt(0).toUpperCase() + t.priority.slice(1)}
                 </div>
                 <button
@@ -150,7 +151,7 @@ const completedTaskCard = (t) => `
                 </div>
                 <span class="status-badge status-${t.status}">Completed</span>
                 <div class="priority-badge priority-${t.priority}">
-                    <i class="fa-solid fa-flag"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
                     ${t.priority.charAt(0).toUpperCase() + t.priority.slice(1)}
                 </div>
                 <button
@@ -204,12 +205,27 @@ function closeTaskModal() {
   editingId = null;
 }
 
+// function editTaskModal(id) {
+//   const task = tasks.find((t) => t.id === id);
+//   if (!task) return;
+
+//   const header = document.querySelector(".taskModal-header");
+//   header.innerHTML = `<input type="text" id="task-input" value="${task.title}" required />`;
+
+//   document.getElementById("taskStatus").value = task.status;
+//   document.getElementById("taskPriority").value = task.priority;
+//   document.getElementById("add-btn").textContent = "Update Task";
+
+//   editingId = id;
+//   document.getElementById("taskModal").classList.add("active");
+// }
+
 //form edit and submit
 document.getElementById("taskForm").addEventListener("submit", function (e) {
   e.preventDefault();
-  const title = document.getElementById("taskTitle").value.trim();
-  const status = document.getElementById("status-select").value;
-  const priority = document.getElementById("priority-select").value;
+  const title = document.getElementById("task-input").value.trim();
+  const status = document.getElementById("taskStatus").value;
+  const priority = document.getElementById("taskPriority").value;
 
   if (editingId) {
     const task = tasks.find((t) => t.id === editingId);
