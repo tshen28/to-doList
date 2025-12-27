@@ -64,6 +64,8 @@ Clear button function to mass delete tasks
 
 Add filters for All / Active / Completed
 
+Notifications for new/unread tasks
+
 
 🤝 Contributing
 
