@@ -90,7 +90,15 @@ function editTaskModal(id) {
   const header = document.querySelector(".taskModal-header");
   if (header) {
     const newHeader = task.title.replace(/"/g, "&quot;");
-    header.innerHTML = `<input type="text" id="edit-task-title" value="${newHeader}" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 20px; color: #1f2937;" required/>`;
+    header.innerHTML = `
+    <style>
+        #edit-task-title:focus {
+        border: 2px solid mediumslateblue;
+        outline: none;
+    }
+    </style>
+  
+    <input type="text" id="edit-task-title" value="${newHeader}" style="width: 100%; font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; color: #1f2937; border-radius: 15px; padding: 10px 10px; outline: none;" required/>`;
   }
   const statusSelect = document.getElementById("taskStatus");
   if (statusSelect) {
@@ -263,20 +271,20 @@ function closeTaskModal() {
 //save preference in local storage
 //apply saved theme on page load
 function toggleTheme() {
-    const body = document.body;
-    body.classList.toggle("dark-mode");
+  const body = document.body;
+  body.classList.toggle("dark-mode");
 
-    const isDarkMode = body.classList.contains("dark-mode");
-    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+  const isDarkMode = body.classList.contains("dark-mode");
+  localStorage.setItem("theme", isDarkMode ? "dark" : "light");
 
-    const themeIcon = document.getElementById("theme-icon");
-    if (isDarkMode) {
-        themeIcon.classList.remove("fa-moon");
-        themeIcon.classList.add("fa-sun");
-    } else {
-        themeIcon.classList.remove("fa-sun");
-        themeIcon.classList.add("fa-moon");
-    }
+  const themeIcon = document.getElementById("theme-icon");
+  if (isDarkMode) {
+    themeIcon.classList.remove("fa-moon");
+    themeIcon.classList.add("fa-sun");
+  } else {
+    themeIcon.classList.remove("fa-sun");
+    themeIcon.classList.add("fa-moon");
+  }
 }
 
 //notification dots:
