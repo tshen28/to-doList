@@ -17,6 +17,7 @@ body {
   background: var(--bg);
   min-height: 100vh;
   padding: 40px 20px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -510,18 +511,118 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* theme toggle styles */
+/* dark mode styles */
 .dark-mode {
-    background: darkslateblue;
+  background: #17153b;
+  color: #f3f4f6;
+}
+
+.dark-mode .container {
+  background: #2e236c;
+  border-color: var(--text-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  color: #f3f4f6;
+}
+
+.dark-mode .greeting,
+.dark-mode .greeting h1, .dark-mode .title-section h1 #task-count {
+  color: #c8acd6;
+}
+
+.dark-mode .header-icons button {
+  border: #c8acd6 2px solid;
+  background: #433d8b;
+  color: #f3f4f6;
+}
+
+.dark-mode .header-icons button:hover {
+    border: #f3f4f6 2px solid;
+    background: #c8acd6;
+    color: #433d8b;
+}
+
+.dark-mode .add-btn {
+  border: #c8acd6 2px solid;
+  background: #433d8b;
+  color: #f3f4f6;
+}
+
+.dark-mode .sidebar {
+  background: #433d8b;
+  border: #c8acd6 2px solid;
+}
+
+.dark-mode .sidebar-title,
+.dark-mode .stat-label {
+  color: #f3f4f6;
+}
+
+.dark-mode .stat-value {
+  color: #c8acd6;
+}
+
+.dark-mode .progress-bar {
+  border: #f3f4f6 2px solid;
+}
+
+.dark-mode .progress-fill {
+  background: #c8acd6;
+}
+
+.dark-mode .task-section-header h2,
+.dark-mode .title-section h1 {
+  color: #f3f4f6;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .stat-card,
+.dark-mode .task-item {
+  background: #433d8b;
+  border: #c8acd6 2px solid;
+  color: #f3f4f6;
+}
+
+.dark-mode .task-bar input {
+  background: #433d8b;
+  color: #f3f4f6;
+  border: #c8acd6 2px solid;
+}
+
+.dark-mode .task-bar i,
+.dark-mode .task-bar ::placeholder {
+  color: #f3f4f6;
+}
+
+.dark-mode .task-checkbox {
+    border: #c8acd6 2px solid;
+    background: #f3f4f6;
+}
+
+.dark-mode .task-title {
     color: #f3f4f6;
 }
 
-.dark-mode .container, .dark-mode .sidebar, .dark-mode .stat-card, .dark-mode .modal-content, .dark-mode .taskModal-content, .dark-mode .task-item {
-    background: var(--pc);
-    border-color: var(--text-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    color: #f3f4f6;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+.dark-mode .edit-icon, .dark-mode .delete-icon {
+    border: #c8acd6 2px solid;
+    color: #433d8b;
+    background: #f3f4f6;
+}
+
+.dark-mode .edit-icon:hover, .dark-mode .delete-icon:hover {
+    border: #f3f4f6 2px solid;
+    background: #c8acd6;
+    color: #433d8b;
+}
+
+.dark-mode .task-checkbox.completed::after {
+  content: "✓";
+  color: #433d8b;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 600;
 }
 
 /* mobile responsive styles */
