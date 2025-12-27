@@ -91,7 +91,6 @@ function editTaskModal(id) {
   if (header) {
     const newHeader = task.title.replace(/"/g, "&quot;");
     header.innerHTML = `<input type="text" id="edit-task-title" value="${newHeader}" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 20px; color: #1f2937;" required/>`;
-    console.log(newHeader);
   }
   const statusSelect = document.getElementById("taskStatus");
   if (statusSelect) {
@@ -118,7 +117,36 @@ function editTaskModal(id) {
   modal.classList.add("active");
 }
 
-//example task card template
+//form edit and submit
+document.getElementById("taskForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const title = editingId ? document.getElementById("edit-task-title").value.trim() : document.getElementById("taskModal-header").textContent.trim();
+  const status = document.getElementById("taskStatus").value;
+  const priority = document.getElementById("taskPriority").value;
+
+  if (editingId) {
+    const task = tasks.find((t) => t.id === editingId);
+    task.title = title;
+    task.status = status;
+    task.priority = priority;
+    task.completed = status === "completed";
+  } else {
+    tasks.push({
+      id: Date.now(),
+      title,
+      status,
+      priority,
+      completed: status === "completed",
+    });
+  }
+
+  renderTasks();
+  closeTaskModal();
+  document.getElementById("task-input").value = "";
+});
+
+//task card templates
 const taskCard = (t) => `
             <div class="task-item">
               <div class="task-checkbox ${
@@ -225,44 +253,6 @@ function closeTaskModal() {
   editingId = null;
 }
 
-//form edit and submit
-document.getElementById("taskForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const title = editingId ? document.getElementById("edit-task-title").value.trim() : document.getElementById("taskModal-header").textContent.trim();
-  const status = document.getElementById("taskStatus").value;
-  const priority = document.getElementById("taskPriority").value;
-
-  if (editingId) {
-    const task = tasks.find((t) => t.id === editingId);
-    task.title = title;
-    task.status = status;
-    task.priority = priority;
-    task.completed = status === "completed";
-  } else {
-    tasks.push({
-      id: Date.now(),
-      title,
-      status,
-      priority,
-      completed: status === "completed",
-    });
-  }
-
-  renderTasks();
-  closeTaskModal();
-  document.getElementById("task-input").value = "";
-});
-
-//user modal functions
-function openUserModal() {
-  document.getElementById("userModal").classList.add("active");
-}
-
-function closeUserModal() {
-  document.getElementById("userModal").classList.remove("active");
-}
-
 //clear buttons for in-progress and completed tasks:
 //confirm before clearing
 //clear tasks from local storage and UI
@@ -271,11 +261,6 @@ function closeUserModal() {
 //toggle between light and dark themes
 //save preference in local storage
 //apply saved theme on page load
-
-//user modal button paths:
-//login and sign up buttons available when user is logged out
-//only logout button available when user is logged in
-//close button always available
 
 //notification dots:
 //notification dots on bell and history icons when there are new notifications or updates
