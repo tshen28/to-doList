@@ -54,8 +54,8 @@ function renderTasks() {
   const pendingCount = taskCount - completedCount;
   const rate = taskCount ? Math.round((completedCount / taskCount) * 100) : 0;
 
-  document.getElementById("totalTasks").textContent = pendingCount;
   document.getElementById("task-count").textContent = pendingCount;
+  document.getElementById("totalTasks").textContent = pendingCount;
   document.getElementById("task-word").textContent =
     pendingCount === 1 ? "task" : "tasks";
   document.getElementById("totalTasks").textContent = pendingCount;
@@ -83,12 +83,39 @@ function deleteTask(id) {
   }
 }
 
-function editTask(id) {
+function editTaskModal(id) {
   const task = tasks.find((t) => t.id === id);
-  if (task) {
-    editingId = id;
-    editTaskModal(id);
+  if (!task) return;
+
+  const header = document.querySelector(".taskModal-header");
+  if (header) {
+    const newHeader = task.title.replace(/"/g, "&quot;");
+    header.innerHTML = `<input type="text" id="edit-task-title" value="${newHeader}" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 20px; color: #1f2937;" required/>`;
+    console.log(newHeader);
   }
+  const statusSelect = document.getElementById("taskStatus");
+  if (statusSelect) {
+    statusSelect.value = task.status;
+  }
+
+  const prioritySelect = document.getElementById("taskPriority");
+  if (prioritySelect) {
+    prioritySelect.value = task.priority;
+  }
+
+  const addBtn = document.querySelector("#taskModal .add-btn");
+  if (addBtn) {
+    addBtn.textContent = "Update Task";
+  }
+
+  editingId = id;
+
+  const modal = document.getElementById("taskModal");
+  if (!modal) {
+    console.error("Task modal element not found.");
+    return;
+  }
+  modal.classList.add("active");
 }
 
 //example task card template
@@ -116,7 +143,7 @@ const taskCard = (t) => `
                 <button
                     class="edit-icon"
                     style="width: 30px; height: 30px"
-                    onclick="editTask(${t.id})"
+                    onclick="editTaskModal(${t.id})"
                 >
                     <i
                     class="fa-solid fa-pen-to-square"
@@ -149,7 +176,7 @@ const completedTaskCard = (t) => `
                 <button
                     class="edit-icon"
                     style="width: 30px; height: 30px"
-                    onclick="editTask(${t.id})"
+                    onclick="editTaskModal(${t.id})"
                 >
                     <i
                     class="fa-solid fa-pen-to-square"
@@ -198,32 +225,17 @@ function closeTaskModal() {
   editingId = null;
 }
 
-function editTaskModal(id) {
-  const task = tasks.find((t) => t.id === id);
-  if (!task) return;
-
-  const header = document.querySelector(".taskModal-header");
-  header.innerHTML = `<input type="text" id="edit-task-title" value="${task.title}" required />`;
-
-  document.getElementById("taskStatus").value = task.status;
-  document.getElementById("taskPriority").value = task.priority;
-  document.getElementById("add-btn").textContent = "Update Task";
-
-  editingId = id;
-  document.getElementById("taskModal").classList.add("active");
-}
-
 //form edit and submit
 document.getElementById("taskForm").addEventListener("submit", function (e) {
   e.preventDefault();
-  const title = editingId ? document.getElementById("edit-task-title").value.trim() : document.getElementById("task-input").value.trim();
+
+  const title = editingId ? document.getElementById("edit-task-title").value.trim() : document.getElementById("taskModal-header").textContent.trim();
   const status = document.getElementById("taskStatus").value;
   const priority = document.getElementById("taskPriority").value;
 
   if (editingId) {
     const task = tasks.find((t) => t.id === editingId);
     task.title = title;
-    console.log(task.title)
     task.status = status;
     task.priority = priority;
     task.completed = status === "completed";
@@ -250,6 +262,10 @@ function openUserModal() {
 function closeUserModal() {
   document.getElementById("userModal").classList.remove("active");
 }
+
+//clear buttons for in-progress and completed tasks:
+//confirm before clearing
+//clear tasks from local storage and UI
 
 //toggle theme function:
 //toggle between light and dark themes

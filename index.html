@@ -58,7 +58,10 @@
       <div class="main-content">
         <div class="title-section">
           <div class="greeting" id="greeting"></div>
-          <h1>You have <span id="task-count">0</span> <span id="task-word">tasks</span> today.</h1>
+          <h1>
+            You have <span id="task-count">0</span>
+            <span id="task-word">tasks</span> today.
+          </h1>
         </div>
 
         <div class="task-bar">
@@ -67,6 +70,7 @@
               type="text"
               id="task-input"
               placeholder="Add a New Task..."
+              autocomplete="off"
             />
             <i class="fa-solid fa-plus"></i>
             <button class="add-btn" onClick="openTaskModal()">Add New</button>
@@ -117,7 +121,6 @@
             </div>
           </div>
 
-
           <div class="stat-card">
             <div class="stat-label">Completed:</div>
             <div class="stat-value" id="completedCount">0</div>
@@ -133,14 +136,18 @@
 
     <div class="taskModal" id="taskModal">
       <div class="taskModal-content">
-        <h2 class="taskModal-header">
-          <!-- Inputted task goes here -->
-        </h2>
+        <div class="taskModal-header" id="taskModal-header">
+          <h2>
+            <!-- Insert task title -->
+          </h2>
+        </div>
         <form id="taskForm">
           <div class="form-group">
             <label for="taskStatus">Status</label>
             <select id="taskStatus" required>
-              <option value="" disabled selected hidden>Select Status...</option>
+              <option value="" disabled selected hidden>
+                Select Status...
+              </option>
               <option value="pending">Pending</option>
               <option value="in-progress">In-Progress</option>
               <option value="completed">Completed</option>
@@ -148,7 +155,9 @@
 
             <label for="taskPriority">Priority</label>
             <select id="taskPriority" required>
-              <option value="" disabled selected hidden>Select Priority...</option>
+              <option value="" disabled selected hidden>
+                Select Priority...
+              </option>
               <option value="minor">Minor</option>
               <option value="normal">Normal</option>
               <option value="critical">Critical</option>
@@ -156,7 +165,7 @@
           </div>
 
           <div class="taskModal-actions">
-            <button type="submit" class="btn btn-primary">Add Task</button>
+            <button type="submit" class="btn btn-primary" id="add-btn">Add Task</button>
             <button
               type="button"
               class="btn btn-secondary"
