@@ -121,7 +121,9 @@ function editTaskModal(id) {
 document.getElementById("taskForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const title = editingId ? document.getElementById("edit-task-title").value.trim() : document.getElementById("taskModal-header").textContent.trim();
+  const title = editingId
+    ? document.getElementById("edit-task-title").value.trim()
+    : document.getElementById("taskModal-header").textContent.trim();
   const status = document.getElementById("taskStatus").value;
   const priority = document.getElementById("taskPriority").value;
 
@@ -229,8 +231,7 @@ function updateGreeting() {
   if (hours >= 12 && hours < 18) greetingText = "Good Afternoon";
   else if (hours >= 18) greetingText = "Good Evening";
 
-  document.getElementById("greeting").textContent = `${greetingText}, $User!`;
-  //change $User to actual username when user authentication is implemented
+  document.getElementById("greeting").textContent = `${greetingText}!`;
 }
 
 //task modal functions
@@ -261,6 +262,22 @@ function closeTaskModal() {
 //toggle between light and dark themes
 //save preference in local storage
 //apply saved theme on page load
+function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+
+    const isDarkMode = body.classList.contains("dark-mode");
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+
+    const themeIcon = document.getElementById("theme-icon");
+    if (isDarkMode) {
+        themeIcon.classList.remove("fa-moon");
+        themeIcon.classList.add("fa-sun");
+    } else {
+        themeIcon.classList.remove("fa-sun");
+        themeIcon.classList.add("fa-moon");
+    }
+}
 
 //notification dots:
 //notification dots on bell and history icons when there are new notifications or updates
