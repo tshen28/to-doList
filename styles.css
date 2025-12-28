@@ -519,7 +519,7 @@ body {
 
 .dark-mode .container {
   background: #2e236c;
-  border-color: var(--text-color);
+  border: #c8acd6 2px solid;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   color: #f3f4f6;
 }
