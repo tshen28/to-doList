@@ -127,7 +127,12 @@ body {
   color: white;
 }
 
+.notification-dot.active {
+    display: flex;
+}
+
 .notification-dot {
+    display: none;
   position: absolute;
   top: 8px;
   right: 8px;

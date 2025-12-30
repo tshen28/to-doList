@@ -74,6 +74,7 @@ function toggleTask(id) {
     task.status = task.completed ? "completed" : "in-progress";
     renderTasks();
   }
+  showNotificationDot();
 }
 
 function deleteTask(id) {
@@ -260,6 +261,7 @@ function closeTaskModal() {
   document.getElementById("taskModal").classList.remove("active");
   document.getElementById("taskForm").reset();
   editingId = null;
+  showNotificationDot();
 }
 
 //clear buttons for in-progress and completed tasks:
@@ -291,6 +293,24 @@ function toggleTheme() {
 //notification dots on bell and history icons when there are new notifications or updates
 //when clicked, dots disappear and the user can view notifications
 //only show dots for notifications that are new or unread
+const historyNotification = document.getElementById("history-notification");
+const taskNotification = document.getElementById("task-notification");
+
+function showNotificationDot() {
+    historyNotification.classList.add('active');
+    taskNotification.classList.add('active');
+
+    const notificationIcon = document.getElementById("notification-bell");
+    const historyIcon = document.getElementById("history-btn");
+
+    notificationIcon.onclick = () => {
+        taskNotification.classList.remove('active');
+    }
+
+    historyIcon.onclick = () => {
+        historyNotification.classList.remove('active');
+    }
+}
 
 //call functions
 updateGreeting();
