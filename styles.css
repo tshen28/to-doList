@@ -128,11 +128,11 @@ body {
 }
 
 .notification-dot.active {
-    display: flex;
+  display: flex;
 }
 
 .notification-dot {
-    display: none;
+  display: none;
   position: absolute;
   top: 8px;
   right: 8px;
@@ -530,7 +530,8 @@ body {
 }
 
 .dark-mode .greeting,
-.dark-mode .greeting h1, .dark-mode .title-section h1 #task-count {
+.dark-mode .greeting h1,
+.dark-mode .title-section h1 #task-count {
   color: #c8acd6;
 }
 
@@ -541,9 +542,9 @@ body {
 }
 
 .dark-mode .header-icons button:hover {
-    border: #f3f4f6 2px solid;
-    background: #c8acd6;
-    color: #433d8b;
+  border: #f3f4f6 2px solid;
+  background: #c8acd6;
+  color: #433d8b;
 }
 
 .dark-mode .add-btn {
@@ -599,24 +600,26 @@ body {
 }
 
 .dark-mode .task-checkbox {
-    border: #c8acd6 2px solid;
-    background: #f3f4f6;
+  border: #c8acd6 2px solid;
+  background: #f3f4f6;
 }
 
 .dark-mode .task-title {
-    color: #f3f4f6;
+  color: #f3f4f6;
 }
 
-.dark-mode .edit-icon, .dark-mode .delete-icon {
-    border: #c8acd6 2px solid;
-    color: #433d8b;
-    background: #f3f4f6;
+.dark-mode .edit-icon,
+.dark-mode .delete-icon {
+  border: #c8acd6 2px solid;
+  color: #433d8b;
+  background: #f3f4f6;
 }
 
-.dark-mode .edit-icon:hover, .dark-mode .delete-icon:hover {
-    border: #f3f4f6 2px solid;
-    background: #c8acd6;
-    color: #433d8b;
+.dark-mode .edit-icon:hover,
+.dark-mode .delete-icon:hover {
+  border: #f3f4f6 2px solid;
+  background: #c8acd6;
+  color: #433d8b;
 }
 
 .dark-mode .task-checkbox.completed::after {

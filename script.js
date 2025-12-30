@@ -269,9 +269,6 @@ function closeTaskModal() {
 //clear tasks from local storage and UI
 
 //toggle theme function:
-//toggle between light and dark themes
-//save preference in local storage
-//apply saved theme on page load
 function toggleTheme() {
   const body = document.body;
   body.classList.toggle("dark-mode");
